@@ -17,7 +17,6 @@ public class User {
         return loadMoment < maxLoan;
     }
 
-
     public class UserComum extends User {
         public UserComum(String name) {
             super(name, 2);

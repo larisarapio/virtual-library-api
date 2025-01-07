@@ -27,11 +27,8 @@ public class Library {
     }
 
     public double calcPenalty(Loan loan) {
-    long daysDelay = ChronoUnit.DAYS.between(loan.getDataReturn(), LocalDate.now());
-    return daysDelay > 0 ? daysDelay * 2.0 : 0.0;
-}
-
-
-
+        long daysDelay = ChronoUnit.DAYS.between(loan.getDataReturn(), LocalDate.now());
+        return daysDelay > 0 ? daysDelay * 2.0 : 0.0;
+    }
     
 }

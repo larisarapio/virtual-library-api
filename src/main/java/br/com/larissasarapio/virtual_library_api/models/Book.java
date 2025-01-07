@@ -17,7 +17,14 @@ public class Book {
     public boolean isAvailable() {
         return available;
     }
-    
+
+    @Override
+    public String toString() {
+        String meuNovoLivro = "title: " + getTitle() + 
+                              " author: " + getAuthor() +
+                              " avaible: " + isAvailable();
+        return meuNovoLivro;
+    }
 }
 
 
