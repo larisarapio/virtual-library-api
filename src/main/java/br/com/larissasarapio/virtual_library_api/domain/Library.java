@@ -26,7 +26,7 @@ public class Library {
         return books.stream().filter(Book::isAvailable).toList();
     }
 
-    public double calcPenalty(Loan loan) {
+    public double calcPenalty(TakeBook loan) {
         long daysDelay = ChronoUnit.DAYS.between(loan.getDataReturn(), LocalDate.now());
         return daysDelay > 0 ? daysDelay * 2.0 : 0.0;
     }

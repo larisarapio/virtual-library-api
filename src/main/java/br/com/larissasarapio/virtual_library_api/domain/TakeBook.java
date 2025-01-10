@@ -11,13 +11,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Loan {
+public class TakeBook {
     private User user;
     private Book book;
     private LocalDate dataLoan;
     private LocalDate dataReturn;
 
-    public Loan(User user, Book book) {
+    public TakeBook(User user, Book book) {
         this.user = user;
         this.book = book;
         this.dataLoan = LocalDate.now();
