@@ -6,11 +6,13 @@ import br.com.larissasarapio.virtual_library_api.dtos.BookDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "book")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Book {
@@ -27,7 +29,7 @@ public class Book {
 
     @Column(nullable = false)
     private boolean available = true;
-
+                                                                                                                                                                                                                                                                        
     public boolean isAvailable() {
         return available;
     }
