@@ -14,15 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.larissasarapio.virtual_library_api.domain.Book;
 import br.com.larissasarapio.virtual_library_api.dtos.BookDTO;
 import br.com.larissasarapio.virtual_library_api.services.BookService;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping("/book")
 public class BookController {
 
     private final BookService bookService;
-    
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
     @PostMapping()
     public ResponseEntity<Book> createBook(@RequestBody BookDTO bookDTO) {
         Book book = bookService.createBook(bookDTO);

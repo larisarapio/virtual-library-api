@@ -3,20 +3,21 @@ package br.com.larissasarapio.virtual_library_api.services;
 import br.com.larissasarapio.virtual_library_api.domain.User;
 import br.com.larissasarapio.virtual_library_api.dtos.UserDTO;
 import br.com.larissasarapio.virtual_library_api.repositories.UserRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
 
-    public void createUser(UserDTO userDTO) {
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User createUser(UserDTO userDTO) {
         validateNameDoesNotExist(userDTO.name());
-        // Código para salvar o usuário no banco
-        User user = new User(userDTO.name(), 2);
-        userRepository.save(user);
+        User user = new User(null, userDTO.name(), 2);
+        return userRepository.save(user);
     }
 
     private void validateNameDoesNotExist(String name) {

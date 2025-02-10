@@ -1,18 +1,32 @@
 package br.com.larissasarapio.virtual_library_api.domain;
 
-import br.com.larissasarapio.virtual_library_api.dtos.UserDTO;
-import br.com.larissasarapio.virtual_library_api.repositories.UserRepository;
+import java.util.UUID;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+@Entity
+@Table(name = "user")
 @AllArgsConstructor
 @Getter
 @Setter
 public class User {
-    private final String name;
-    private final int maxLoan;
+    
+    @Id
+    @GeneratedValue
+    private UUID id;
 
+    @Column(nullable = false)
+    private final String name;
+
+    @Column(nullable = false)
+    private final int maxLoan;
 
     public boolean canTakeLoan(int loadMoment) {
         return loadMoment < maxLoan;
@@ -20,13 +34,13 @@ public class User {
 
     public class UserComum extends User {
         public UserComum(String name) {
-            super(name, 2);
+            super(id, name, 2);
         }
     }
     
     public class UserPremium extends User {
         public UserPremium(String name) {
-            super(name, 5);
+            super(null, name, 5);
         }
     }
 }
